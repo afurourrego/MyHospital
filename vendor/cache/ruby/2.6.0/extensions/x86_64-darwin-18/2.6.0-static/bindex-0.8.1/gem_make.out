@@ -1,0 +1,15 @@
+current directory: /Users/afuro/Documents/GitHub/MyHospital/vendor/cache/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/afuro/.rbenv/versions/2.6.3/bin/ruby -I /Users/afuro/.rbenv/versions/2.6.3/lib/ruby/2.6.0 -r ./siteconf20190826-57107-nvtsk2.rb extconf.rb
+creating Makefile
+
+current directory: /Users/afuro/Documents/GitHub/MyHospital/vendor/cache/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /Users/afuro/Documents/GitHub/MyHospital/vendor/cache/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/afuro/Documents/GitHub/MyHospital/vendor/cache/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20190826-57107-e8ac0i/skiptrace/internal

@@ -1,36 +1,39 @@
-
-
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @user.phone %>
-</p>
-
-<p>
-  <strong>Role:</strong>
-  <%= @user.role %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
-
 <div class="col s12">
   <div class="card">
     <div class="card-action card_action_title">
-      <span class="card-title white-text"><%= t("users.invite_user") %></span>
+      <span class="card-title white-text"><b>User</b></span>
+      <% if can? :update, User %>
+        <div class="waves-effect waves-light btn right action_button_card action_button_card_first_right">
+          <%= link_to 'EDIT', edit_user_path(@user), class: 'white-text btn_link_to' %>
+        </div>
+      <% end %>
+      <div class="waves-effect waves-light btn right action_button_card">
+        <%= link_to 'BACK', users_path, class: 'white-text btn_link_to' %>
+      </div>
     </div>
     <div class="card-content">
       <div class="row">
-        <div class="col s12">
+        <div class="col s12 m10 offset-m1">
+
+          <div class="input-field col s12 m6">
+            <input disabled value="<%= @user.name %>" type="text" class="validate">
+              <label>Name</label>
+          </div>
+
+          <div class="input-field col s12 m6">
+            <input disabled value="<%= @user.role %>" type="text" class="validate">
+              <label>Role</label>
+          </div>
+
+          <div class="input-field col s12 m6">
+            <input disabled value="<%= @user.email %>" type="text" class="validate">
+              <label>Email</label>
+          </div>
+
+          <div class="input-field col s12 m6">
+            <input disabled value="<%= @user.phone %>" type="text" class="validate">
+              <label>Phone</label>
+          </div>
 
         </div>
       </div>

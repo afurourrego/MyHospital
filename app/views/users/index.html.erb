@@ -1,7 +1,7 @@
 <div class="col s12">
   <div class="card">
-    <div class="card_action card-action_title">
-      <span class="card-title white-text">Users</span>
+    <div class="card_action card_action_title">
+      <span class="card-title white-text"><b>Users</b></span>
     </div>
     <div class="card-content">
       <div class="row card_content_row">
@@ -31,13 +31,32 @@
             <tbody>
               <% @users.each do |user| %>
                 <tr>
-                  <td><%= user.name %></td>
+                  <td><%= user.name.titleize %></td>
                   <td><%= user.email %></td>
                   <td><%= user.phone %></td>
-                  <td><%= user.role %></td>
-                  <td><%= link_to 'Show', user %></td>
-                  <td><%= link_to 'Edit', edit_user_path(user) %></td>
-                  <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  <td><%= user.role.titleize %></td>
+
+                  <td>
+                    <% if can? :create, User %>
+                      <%= link_to user do %>
+                        <i class="material-icons">pageview</i>
+                      <% end %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if can? :update, User %>
+                      <%= link_to edit_user_path(user) do %>
+                        <i class="material-icons">edit</i>
+                      <% end %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if can? :destroy, User %>
+                      <%= link_to user, method: :delete, data: { confirm: "¿Esta seguro de elminarlo?" } do %>
+                        <i class="material-icons">delete</i>
+                      <% end %>
+                    <% end %>
+                  </td>
                 </tr>
               <% end %>
             </tbody>
@@ -48,14 +67,14 @@
   </div>
 </div>
 
-<% unless can? :create, User %>
+<% if can? :create, User %>
   <%= form_for(User.new, url: user_invitation_path) do |f| %>
     <div class="col s12">
       <div class="card">
         <div class="card-action card_action_title">
-          <span class="card-title white-text"><%= t("users.invite_user") %></span>
-          <%= f.button :button, type: :submit, class: 'waves-effect waves-light btn right action_button_table action_button_table__first_right' do %>
-          <%= t("share.submit") %>
+          <span class="card-title white-text"><b>Invite User</b></span>
+          <%= f.button :button, type: :submit, class: 'waves-effect waves-light btn right action_button_card action_button_card_first_right' do %>
+            SUBMIT
           <% end %>
         </div>
         <div class="card-content">

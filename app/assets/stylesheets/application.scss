@@ -1,11 +1,16 @@
 @import "materialize/components/color-variables";
 
-$primary-color: #b3e5fc !default;
 $primary-color-light: #e6ffff !default;
+$primary-color: #b3e5fc !default;
+$primary-color-middle: #99c8dd !default;
 $primary-color-dark: #82b3c9 !default;
+$primary-color-dark-dark: #6997ab !default;
+
+$primary-color-alert: #e29191 !default;
 
 @import 'materialize';
-@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@import 'table.scss';
+
 
 body {
   background-color: $primary-color;
@@ -14,7 +19,7 @@ body {
 .card {
   border-radius: 0px !important;
   box-shadow: 0px 0px 0px !important;
-  .card-action_title {
+  .card_action_title {
     padding: 5px 24px;
     background-color: $primary-color-dark !important;
   }
@@ -45,4 +50,43 @@ body {
   background-color: $primary-color-dark;
   border-radius: 0px !important;
   box-shadow: 0px 0px 0px !important;
+}
+.btn:hover {
+  background-color: $primary-color-middle;
+}
+
+.btn_big {
+  margin: 12px 0;
+  height: auto;
+  padding: 20px 24px 20px 24px !important;
+  font-size: 22px;
+}
+
+.btn_alert {
+  background-color: $primary-color-alert;
+}
+.btn_alert:hover {
+  background-color: $primary-color-alert;
+}
+
+
+.action_button_card {
+  height: 47px;
+  line-height: 45px;
+  position: relative;
+  top: -6px;
+  background: $primary-color-dark-dark;
+  margin-right: 1px;
+  &_first_right {
+    margin-right: -24px !important;
+    border-radius: 0 3px 0 0;
+  }
+  .btn_link_to {
+    margin-right: 0px !important;
+  }
+  input { color: white; }
+}
+
+.material-icons {
+  color: $primary-color-dark-dark !important;
 }

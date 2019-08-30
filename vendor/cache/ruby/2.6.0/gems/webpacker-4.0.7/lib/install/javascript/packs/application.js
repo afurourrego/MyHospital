@@ -14,5 +14,36 @@
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+//= require jquery
+//= require rails-ujs
+//= require activestorage
+//= require turbolinks
+//= require materialize
+//= require_tree .
 
-console.log('Hello World from Webpacker')
+document.addEventListener('turbolinks:load', function() {
+    M.updateTextFields();
+    
+    slidOutMenu                 = document.querySelector('#slide-out');
+    collapsible                 = document.querySelectorAll('.collapsible');
+
+    slidOutMenuInstance         = new M.Sidenav(slidOutMenu, {});
+    collapsibleInstance         = M.Collapsible.init(collapsible, {});
+  });
+
+document.addEventListener('turbolinks:before-visit', function() {
+    slidOutMenu                 = document.querySelector('.sidenav');
+    collapsible                 = document.querySelectorAll('.collapsible');
+
+    slidOutMenuInstance         = M.Sidenav.getInstance(slidOutMenu);
+
+    if (slidOutMenuInstance)    slidOutMenuInstance.destroy();
+
+    if (!!collapsible && collapsible.length > 0) {
+      collapsible.forEach(function (element) {
+        var collapsibleInstances = M.Collapsible.getInstance(element);
+        if (collapsibleInstances) collapsibleInstances.destroy();
+      });
+    };
+
+  });

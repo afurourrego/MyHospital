@@ -1,0 +1,15 @@
+<% if user_signed_in? %>
+  <ul id="slide-out" class="sidenav">
+    <% if can? :index, User %>
+    <li>
+      <%= link_to users_path, id:'users_fixed_nav_bar' do %>
+      <i class="material-icons users">account_circle</i>
+      <% end %>
+    </li>
+    <li><div class="divider"></div></li>
+    <% end %>
+
+  </ul>
+  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+<% end %>

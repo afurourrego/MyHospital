@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 ['urrego@myhospital.com', 'natalia@myhospital.com', 'anthony@myhospital.com', 'farfan@myhospital.com', 'carlos@myhospital.com'].each do |email|
-  User.new(email: email,
-               password: '123456',
-               password_confirmation: '123456',
-               role: 'super_admin',
-               ).save(validate: false)
+  User.new(name: email.split('@')[0],
+           email: email,
+           password: '123456',
+           password_confirmation: '123456',
+           role: 'super_admin' ).save(validate: false)
 end

@@ -8,5 +8,41 @@ $primary-color-dark: #82b3c9 !default;
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
 body {
-  background-color: $primary-color-light;
+  background-color: $primary-color;
+}
+
+.card {
+  border-radius: 0px !important;
+  box-shadow: 0px 0px 0px !important;
+  .card-action_title {
+    padding: 5px 24px;
+    background-color: $primary-color-dark !important;
+  }
+  .card-content {
+    .card_content_row {
+      margin-top: -30px;
+      margin-bottom: 2px;
+    }
+  }
+}
+
+.scrollable {
+  overflow: scroll;
+  width: 100%;
+}
+
+.search_box {
+  margin-top: 12px;
+  .button_search {
+    margin-top: 0px;
+    @media #{$medium-and-up} {
+      margin-top: 25px;
+    }
+  }
+}
+
+.btn {
+  background-color: $primary-color-dark;
+  border-radius: 0px !important;
+  box-shadow: 0px 0px 0px !important;
 }

@@ -1,7 +1,12 @@
 @import "materialize/components/color-variables";
 
-// $primary-color: color("blue", "lighten-2") !default;
-// $secondary-color: color("yellow", "base") !default;
+$primary-color: #b3e5fc !default;
+$primary-color-light: #e6ffff !default;
+$primary-color-dark: #82b3c9 !default;
 
 @import 'materialize';
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+body {
+  background-color: $primary-color-light;
+}

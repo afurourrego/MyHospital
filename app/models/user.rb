@@ -2,12 +2,13 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
-  devise :database_authenticatable, :registerable,
+  devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
-  validates :role, presence: true
+  # validate :validate_permited_roles
+
 
 
   enum role: { 'super_admin': 1, 'administrator': 2, 'doctor': 3 }
@@ -18,6 +19,22 @@ class User < ApplicationRecord
       usr = usr.where('lower(email) LIKE ?', search.downcase)
     end
     usr
+  end
+
+  def permited_role
+    if super_admin?
+      User.roles
+    else
+      User.roles.reject { |_r, n| n != User.roles[role] }
+    end
+  end
+
+  def validate_permited_roles
+    return true unless role_changed?
+    return true if User&.current&.permited_role.include?(role)
+
+    errors.add(:role, 'role no permitido')
+    false
   end
 
   private

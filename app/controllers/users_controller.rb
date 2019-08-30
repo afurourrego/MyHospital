@@ -6,9 +6,8 @@ class UsersController < ApplicationController
   before_action :set_current_user
 
   def index
-    @users = User.all
-    # @users = User.search(@users, user_params_search).page(params[:page])
-    # @permited_roles = current_user.permited_role
+    @users = User.search(@users, user_params_search)#.page(params[:page])
+    @permited_roles = current_user.permited_role
   end
 
   def show

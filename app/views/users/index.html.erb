@@ -29,3 +29,36 @@
 </table>
 
 <br>
+
+<% if can? :create, User %>
+  <%= form_for(User.new, url: user_invitation_path) do |f| %>
+    <div class="col s12">
+      <div class="card">
+        <div class="card-action card_action_title">
+          <span class="card-title white-text"><%= t("users.invite_user") %></span>
+          <%= f.button :button, type: :submit, class: 'waves-effect waves-light btn right action_button_table action_button_table__first_right' do %>
+          <%= t("share.submit") %>
+          <% end %>
+        </div>
+        <div class="card-content">
+          <div class="row">
+            <div class="col s12">
+              <div class="input-field col s12 m12 l6">
+                <%= f.label :email, t("users.email") %>
+                <%= f.text_field :email %>
+              </div>
+              <div class="input-field col s12 m12 l6">
+                <%= f.label :role, t("users.role") %>
+                <%= f.text_field :role %>
+              </div>
+              <!-- <div class="striped input-field col s6 m8 l3">
+                <#%= f.collection_select :role, @permited_roles, :first, ->(role) { I18n.t("users.roles.#{role.first}") } %>
+                <#%= f.label :role, t("users.role"), class: 'active' %>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

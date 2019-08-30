@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
-  # load_and_authorize_resource
+  load_and_authorize_resource
 
-  # before_action :set_current_user
+  before_action :set_current_user
 
   def index
+    @users = User.all
     # @users = User.search(@users, user_params_search).page(params[:page])
     # @permited_roles = current_user.permited_role
   end
@@ -13,13 +14,7 @@ class UsersController < ApplicationController
   def show
   end
 
-  def new
-  end
-
   def edit
-  end
-
-  def create
   end
 
   def update

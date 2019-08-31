@@ -7,6 +7,10 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+import '../src/application.scss';
+
+
+import 'materialize-css/dist/js/materialize.js';
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -25,7 +29,7 @@ require("channels")
 
 
 document.addEventListener('turbolinks:load', function() {
-  // M.updateTextFields();
+  M.updateTextFields();
 //
 //     slidOutMenu                 = document.querySelector('#slide-out');
 //     collapsible                 = document.querySelectorAll('.collapsible');

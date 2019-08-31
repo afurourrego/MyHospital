@@ -25,7 +25,7 @@ require("channels")
 
 
 document.addEventListener('turbolinks:load', function() {
-  M.updateTextFields();
+  // M.updateTextFields();
 //
 //     slidOutMenu                 = document.querySelector('#slide-out');
 //     collapsible                 = document.querySelectorAll('.collapsible');

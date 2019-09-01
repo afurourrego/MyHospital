@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.search(@users, user_params_search)#.page(params[:page])
-    @permited_roles = current_user.permited_role
   end
 
   def show

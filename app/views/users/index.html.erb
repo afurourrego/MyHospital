@@ -84,14 +84,10 @@
                 <%= f.label :email, t("users.email") %>
                 <%= f.text_field :email %>
               </div>
-              <div class="input-field col s12 m12 l6">
-                <%= f.label :role, t("users.role") %>
-                <%= f.text_field :role %>
+              <div class="input-field col s12 m6">
+                <%= f.collection_select :role, current_user.permited_role, :first, ->(role) { role.first.titleize } %>
+                <%= f.label :role, t("users.role"), class: 'active' %>
               </div>
-              <!-- <div class="striped input-field col s6 m8 l3">
-                <#%= f.collection_select :role, @permited_roles, :first, ->(role) { I18n.t("users.roles.#{role.first}") } %>
-                <#%= f.label :role, t("users.role"), class: 'active' %>
-              </div> -->
             </div>
           </div>
         </div>

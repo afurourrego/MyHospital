@@ -7,6 +7,7 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require('jquery')
 import '../src/application.scss';
 
 
@@ -24,7 +25,7 @@ import 'materialize-css/dist/js/materialize.js';
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require materialize
+
 //= require_tree .
 
 
@@ -36,7 +37,7 @@ document.addEventListener('turbolinks:load', function() {
 //     datePikers                  = document.querySelectorAll('.datepicker-date');
 //     timePikers                  = document.querySelectorAll('.datepicker-time');
 //
-//     $select                     = $('select')
+  var $select                     = $('select')
 //
 //     slidOutMenuInstance         = new M.Sidenav(slidOutMenu, {});
 //     collapsibleInstance         = M.Collapsible.init(collapsible, {});
@@ -44,8 +45,8 @@ document.addEventListener('turbolinks:load', function() {
 //     timePickerinstances         = M.Timepicker.init(timePikers, { showClearBtn: true, autoClose: true });
 //
 //
-//     if ($select.length > 0 )                $('select').select2();
-  });
+  if ($select.length > 0 )                $('select').select2();
+});
 
 document.addEventListener('turbolinks:before-visit', function() {
 //     slidOutMenu                 = document.querySelector('#slide-out');
@@ -83,7 +84,9 @@ document.addEventListener('turbolinks:before-visit', function() {
   });
 
 document.addEventListener('turbolinks:before-cache', function() {
-//   if ($select.length > 0) $('select').each(function() {
-//     $(this).select2('destroy');
-//   });
+  var $select                     = $('select')
+
+  if ($select.length > 0) $('select').each(function() {
+    $(this).select2('destroy');
+  });
 });

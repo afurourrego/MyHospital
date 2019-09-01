@@ -35,8 +35,8 @@
           </div>
 
           <div class="input-field col s12 m6">
-            <%= form.label :role, 'Role' %>
-            <%= form.text_field :role %>
+            <%= form.collection_select :role, current_user.permited_role, :first, ->(role) { role.first.titleize } %>
+            <%= form.label :role, t("users.role"), class: 'active' %>
           </div>
 
           <div class="input-field col s12 m6">
@@ -49,10 +49,6 @@
             <%= form.number_field :phone %>
           </div>
 
-          <!-- <div class="striped input-field col s12 m6">
-            < %= form.collection_select :role, current_user.permited_role, :first, ->(role) { I18n.t("users.roles.#{role.first}") } %>
-            < %= form.label :role, t("users.role"), class: 'active' %>
-          </div> -->
 
         </div>
       </div>

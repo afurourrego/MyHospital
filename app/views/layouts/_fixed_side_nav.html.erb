@@ -1,5 +1,15 @@
 <% if user_signed_in? %>
   <ul id="slide-out" class="sidenav">
+    <%= link_to(destroy_user_session_path, class: 'btn-floating btn-large darken-1',  method: 'delete') do %>
+      <i class="large material-icons">keyboard_tab</i>
+    <% end %>
+    <%= link_to(edit_user_registration_path, class: 'btn-floating btn-large darken-1') do %>
+      <i class="large material-icons">mode_edit</i>
+    <% end %>
+    <li><div class="divider"></div></li>
+    
+    <br><br><br>
+    <li><div class="divider"></div></li>
     <% if can? :index, User %>
     <li>
       <%= link_to users_path, id:'users_fixed_nav_bar' do %>
@@ -10,6 +20,6 @@
     <% end %>
 
   </ul>
-  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons menu_button">add_circle</i></a>
 
 <% end %>

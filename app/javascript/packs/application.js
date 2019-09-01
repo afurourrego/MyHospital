@@ -20,45 +20,36 @@ import 'materialize-css/dist/js/materialize.js';
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-//
-//= require jquery
-//= require rails-ujs
-//= require activestorage
-//= require turbolinks
-
-//= require_tree .
-
 
 document.addEventListener('turbolinks:load', function() {
   M.updateTextFields();
-//
-//     slidOutMenu                 = document.querySelector('#slide-out');
+
+  var slidOutMenu                 = document.querySelector('#slide-out');
 //     collapsible                 = document.querySelectorAll('.collapsible');
 //     datePikers                  = document.querySelectorAll('.datepicker-date');
 //     timePikers                  = document.querySelectorAll('.datepicker-time');
 //
-  var $select                     = $('select')
+  // var $select                     = $('select')
 //
-//     slidOutMenuInstance         = new M.Sidenav(slidOutMenu, {});
+  var slidOutMenuInstance         = new M.Sidenav(slidOutMenu, {});
 //     collapsibleInstance         = M.Collapsible.init(collapsible, {});
 //     datePickerinstances         = M.Datepicker.init(datePikers, { showClearBtn: true, autoClose: true, yearRange: 80 });
 //     timePickerinstances         = M.Timepicker.init(timePikers, { showClearBtn: true, autoClose: true });
 //
 //
-  if ($select.length > 0 )                $('select').select2();
+  // if ($select.length > 0 )                $('select').select2();
 });
 
 document.addEventListener('turbolinks:before-visit', function() {
-//     slidOutMenu                 = document.querySelector('#slide-out');
+  var slidOutMenu                 = document.querySelector('#slide-out');
 //     collapsible                 = document.querySelectorAll('.collapsible');
 //     datePikers                  = document.querySelectorAll('.datepicker-date');
 //     timePikers                  = document.querySelectorAll('.datepicker-time');
 //
 //
-//     slidOutMenuInstance         = M.Sidenav.getInstance(slidOutMenu);
+  var slidOutMenuInstance         = M.Sidenav.getInstance(slidOutMenu);
 //
-//     if (slidOutMenuInstance)    slidOutMenuInstance.destroy();
-//     if (actionBtnInstance)      actionBtnInstance.destroy();
+  if (slidOutMenuInstance)    slidOutMenuInstance.destroy();
 //
 //     if (!!collapsible && collapsible.length > 0) {
 //       collapsible.forEach(function (element) {
@@ -84,9 +75,9 @@ document.addEventListener('turbolinks:before-visit', function() {
   });
 
 document.addEventListener('turbolinks:before-cache', function() {
-  var $select                     = $('select')
-
-  if ($select.length > 0) $('select').each(function() {
-    $(this).select2('destroy');
-  });
+  // var $select                     = $('select')
+  //
+  // if ($select.length > 0) $('select').each(function() {
+  //   $(this).select2('destroy');
+  // });
 });

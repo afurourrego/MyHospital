@@ -1,0 +1,66 @@
+<%= form_with(model: @user, local: true) do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <% if @user.errors.count == 1 %>
+          <%= @user.errors.count %> <%= t("errors.messages.not_saved.one", resource: t("users.user")) %>
+        <% else %>
+          <%= t("errors.messages.not_saved.other", resource: t("users.user"), count: @user.errors.count) %>
+        <% end %>
+      </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="card">
+    <div class="card-action card_action_title">
+      <span class="card-title white-text">User</span>
+      <div class="actions white-text waves-effect waves-light btn right action_button_card action_button_card_first_right">
+        <%= form.submit 'SAVE' %>
+      </div>
+      <div class="waves-effect waves-light btn right action_button_card">
+        <%= link_to 'BACK', users_path, class: 'white-text btn_link_to' %>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="row">
+        <div class="col s12 m10 offset-m1">
+
+          <div class="input-field col s12 m6">
+            <%= form.label :name, 'Name' %>
+            <%= form.text_field :name %>
+          </div>
+
+          <div class="input-field col s12 m6">
+            <%= form.collection_select :role, current_user.permited_role, :first, ->(role) { role.first.titleize } %>
+            <%= form.label :role, t("users.role"), class: 'active' %>
+          </div>
+
+          <div class="input-field col s12 m6">
+            <%= form.label :email, 'Email' %>
+            <%= form.text_field :email %>
+          </div>
+
+          <div class="input-field col s12 m6">
+            <%= form.label :phone, 'Phone' %>
+            <%= form.number_field :phone %>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<% if can? :destroy, User %>
+  <div class="row">
+    <div class="col s12">
+      <div class="center-align" id="button_destroy_profile">
+        <%= link_to 'DELETE USER', @user, method: :delete, data: { confirm: "¿Esta seguro de elminarlo?" }, class:"col s12 waves-effect waves-light btn btn_big btn_alert" %>
+      </div>
+    </div>
+  </div>
+<% end %>

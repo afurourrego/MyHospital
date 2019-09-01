@@ -1,2 +1,8 @@
 <h1>Welcome#index</h1>
 <p>Find me in app/views/welcome/index.html.erb</p>
+<%= link_to(destroy_user_session_path, class: 'btn-floating btn-large darken-1',  method: 'delete') do %>
+  <i class="large material-icons">keyboard_tab</i>
+<% end %>
+<%= link_to(edit_user_registration_path, class: 'btn-floating btn-large darken-1') do %>
+  <i class="large material-icons">mode_edit</i>
+<% end %>

@@ -1,0 +1,25 @@
+table {
+  margin-bottom: 18px;
+  thead {
+    tr {
+      th {
+
+      }
+    }
+  }
+  tbody {
+    tr {
+      td {
+
+      }
+    }
+  }
+}
+
+td, th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.table_header {
+  border-collapse: separate !important;
+}

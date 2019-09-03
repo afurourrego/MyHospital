@@ -29,7 +29,7 @@ document.addEventListener('turbolinks:load', function() {
 //     datePikers                  = document.querySelectorAll('.datepicker-date');
 //     timePikers                  = document.querySelectorAll('.datepicker-time');
 //
-  // var $select                     = $('select')
+  var $select                     = $('select')
 //
   var slidOutMenuInstance         = new M.Sidenav(slidOutMenu, {});
 //     collapsibleInstance         = M.Collapsible.init(collapsible, {});
@@ -37,7 +37,7 @@ document.addEventListener('turbolinks:load', function() {
 //     timePickerinstances         = M.Timepicker.init(timePikers, { showClearBtn: true, autoClose: true });
 //
 //
-  // if ($select.length > 0 )                $('select').select2();
+  if ($select.length > 0 )                $('select').select2();
 });
 
 document.addEventListener('turbolinks:before-visit', function() {
@@ -75,9 +75,9 @@ document.addEventListener('turbolinks:before-visit', function() {
   });
 
 document.addEventListener('turbolinks:before-cache', function() {
-  // var $select                     = $('select')
-  //
-  // if ($select.length > 0) $('select').each(function() {
-  //   $(this).select2('destroy');
-  // });
+  var $select                     = $('select')
+
+  if ($select.length > 0) $('select').each(function() {
+    $(this).select2('destroy');
+  });
 });

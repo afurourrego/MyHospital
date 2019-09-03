@@ -1,0 +1,29 @@
+#error_explanation {
+  background-color: #ffcdd2;
+  color: #b71c1c;
+  border-radius: 0px;
+  padding: 0 0 0 18px;
+  margin: 10px 10px 0 10px;
+  h2 {
+    font-size: 20px;
+    padding-top: 20px;
+  }
+  ul {
+    margin-top: 0px !important;
+    padding-bottom: 15px;
+  }
+}
+#flash_notice {
+  background-color: #a5d6a7;
+  color: #1b5e20;
+  border-radius: 0px;
+  padding: 10px 0 10px 20px;
+  margin: 10px 10px 0 10px;
+}
+#flash_alert {
+  background-color: #ffcdd2;
+  color: #b71c1c;
+  border-radius: 0px;
+  padding: 10px 0 10px 20px;
+  margin: 10px 10px 0 10px;
+}

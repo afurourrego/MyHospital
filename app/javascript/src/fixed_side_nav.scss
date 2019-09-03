@@ -15,6 +15,7 @@
   i { width: 35px; }
   li a {
     .local_text{
+      color: $primary-color-dark-dark !important;
       font-size: 20px;
       margin-left: 25px;
       position: absolute;

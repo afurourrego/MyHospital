@@ -31,10 +31,10 @@
             <tbody>
               <% @users.each do |user| %>
                 <tr>
-                  <td><%= user.name.titleize %></td>
-                  <td><%= user.email %></td>
-                  <td><%= user.phone %></td>
-                  <td><%= user.role.titleize %></td>
+                  <td><%= user&.name&.titleize %></td>
+                  <td><%= user&.email %></td>
+                  <td><%= user&.phone %></td>
+                  <td><%= user&.role&.titleize %></td>
 
                   <td>
                     <% if can? :create, User %>

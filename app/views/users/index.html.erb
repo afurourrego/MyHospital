@@ -37,7 +37,7 @@
                   <td><%= user&.role&.titleize %></td>
 
                   <td>
-                    <% if can? :create, User %>
+                    <% if can? :show, User %>
                       <%= link_to user do %>
                         <i class="material-icons">pageview</i>
                       <% end %>

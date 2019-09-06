@@ -21,11 +21,6 @@
           </div>
 
           <div class="input-field col s12 m6">
-            <input disabled value="<%= @user.role.titleize %>" type="text" class="validate">
-              <label>Role</label>
-          </div>
-
-          <div class="input-field col s12 m6">
             <input disabled value="<%= @user.email %>" type="text" class="validate">
               <label>Email</label>
           </div>
@@ -33,6 +28,11 @@
           <div class="input-field col s12 m6">
             <input disabled value="<%= @user.phone %>" type="text" class="validate">
               <label>Phone</label>
+          </div>
+
+          <div class="input-field col s12 m6">
+            <input disabled value="<%= @user.role.titleize %>" type="text" class="validate">
+              <label>Role</label>
           </div>
 
         </div>

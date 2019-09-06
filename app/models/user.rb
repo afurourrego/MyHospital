@@ -9,6 +9,10 @@ class User < ApplicationRecord
 
   validate :validate_permited_roles
 
+  validates_length_of :phone, minimum: 10
+  validates :phone, presence: true
+
+  before_validation :clean_number_phone
 
 
   enum role: { 'super_admin': 1, 'administrator': 2, 'doctor': 3 }
@@ -35,6 +39,10 @@ class User < ApplicationRecord
 
     errors.add(:role, 'role no permitido')
     false
+  end
+
+  def clean_number_phone
+    self.phone = phone&.gsub(/(?!^\+)\D*/, '')
   end
 
   private

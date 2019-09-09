@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update_attributes(user_params)
-        format.html { redirect_to @user, notice: t("share.success_update", class_name: t("users.user_title"))}
+        format.html { redirect_to @user, notice: "User was successfully updated."}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_path }
+      format.html { redirect_to users_path, notice: "User was successfully destroyed." }
       format.json { head :no_content }
     end
   end

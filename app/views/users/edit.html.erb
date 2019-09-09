@@ -3,9 +3,9 @@
     <div id="error_explanation">
       <h2>
         <% if @user.errors.count == 1 %>
-          <%= @user.errors.count %> <%= t("errors.messages.not_saved.one", resource: t("users.user")) %>
+          <%= @user.errors.count %> <%= "Error prohibited this User from being saved:" %>
         <% else %>
-          <%= t("errors.messages.not_saved.other", resource: t("users.user"), count: @user.errors.count) %>
+          <%= "#{@user.errors.count} Errors prohibited this User from being saved:" %>
         <% end %>
       </h2>
       <ul>

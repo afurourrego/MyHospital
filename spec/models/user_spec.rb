@@ -29,7 +29,7 @@ RSpec.describe User, type: :model do
     expect(user2).to_not be_valid
   end
 
-  it "role cannot be blank" do
+  it "role cannot be blank on create" do
     new_user = User.new
     new_user.email = 'new_user@myhospital.com'
     new_user.password = 123456

@@ -34,6 +34,7 @@ group :development, :test do
   gem 'pry-nav', github: 'nixme/pry-nav'
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.8'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -52,6 +53,8 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'database_cleaner'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

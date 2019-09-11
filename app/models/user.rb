@@ -34,6 +34,7 @@ class User < ApplicationRecord
   end
 
   def validate_permited_roles
+    return true if User.current.blank?
     return true unless role_changed?
     return true if User&.current&.permited_role&.include?(role)
 

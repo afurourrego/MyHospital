@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe UsersController, type: :feature do
+RSpec.feature 'Users Feature', type: :feature do
   let(:user) { create(:user) }
 
   it 'test' do

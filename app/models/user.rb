@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
-  validate :validate_permited_roles
+  validate :validate_permited_roles, on: :update
 
   validates_length_of :phone, minimum: 10, on: :update
   validates :phone, presence: true, on: :update

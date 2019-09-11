@@ -2,9 +2,11 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let(:user) { create(:user) }
+  let(:administrator) { create(:administrator) }
+  let(:doctor) { create(:doctor) }
 
   before do
-    user
+    User.current = user
     # @user1 = create(:user)
   end
 
@@ -26,4 +28,14 @@ RSpec.describe User, type: :model do
     user2 = build(:user, email: nil)
     expect(user2).to_not be_valid
   end
+
+  it "role cannot be blank" do
+    new_user = User.new
+    new_user.email = 'new_user@myhospital.com'
+    new_user.password = 123456
+    new_user.save
+
+    expect(new_user.errors.messages[:role]).to eq ["can't be blank"]
+  end
+
 end

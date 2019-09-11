@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   validates_length_of :phone, minimum: 10, on: :update
   validates :phone, presence: true, on: :update
+    validates :role, presence: true
 
   before_validation :clean_number_phone
 
@@ -38,7 +39,7 @@ class User < ApplicationRecord
     return true unless role_changed?
     return true if User&.current&.permited_role&.include?(role)
 
-    errors.add(:role, 'role no permitido')
+    errors.add(:role, 'Unpermitted role')
     false
   end
 

@@ -103,3 +103,17 @@ body {
 .material-icons {
   color: $primary-color-dark-dark !important;
 }
+
+.col.no_border {
+  padding: 0px !important;
+}
+
+.check_box_remember {
+  margin-top: -2px !important;
+  span {
+    padding-left: 23px !important;
+  }
+  label {
+    font-size: 14px !important;
+  }
+}

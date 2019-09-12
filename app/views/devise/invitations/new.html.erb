@@ -7,9 +7,9 @@
     <div class="card">
       <div class="card-action card_action_title">
         <span class="card-title white-text"><b>Invite User</b></span>
-        <%= f.button :button, type: :submit, class: 'waves-effect waves-light btn right action_button_card action_button_card_first_right' do %>
-          SUBMIT
-        <% end %>
+        <div class="waves-effect waves-light btn right action_button_card action_button_card_first_right">
+          <%= f.submit 'SUBMIT', class: 'btn_link_to' %>
+        </div>
       </div>
       <div class="card-content">
         <div class="row">
@@ -18,7 +18,7 @@
               <%= f.label :email, t("users.email") %>
               <%= f.text_field :email %>
             </div>
-            <div class="striped input-field col s6 m8 l3">
+            <div class="input-field col s12 m6">
               <%= f.collection_select :role, current_user.permited_role, :first, ->(role) { role.first.titleize } %>
               <%= f.label :role, t("users.role"), class: 'active' %>
             </div>

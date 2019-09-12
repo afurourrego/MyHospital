@@ -25,15 +25,20 @@
             </div>
 
             <% if devise_mapping.rememberable? %>
-              <div class="input-field">
+            <div class="col s6 no_border check_box_remember">
+              <label>
                 <%= f.check_box :remember_me %>
-                <%= f.label :remember_me %>
-              </div>
+                <span>
+                  <%= f.label :remember_me %>
+                </span>
+              </label>
+            </div>
             <% end %>
 
             <div class="right">
               <%= render "devise/shared/links" %>
             </div>
+
 
           </div>
         </div>

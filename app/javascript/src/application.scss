@@ -84,6 +84,7 @@ body {
 
 
 .action_button_card {
+  padding: 0px !important;
   height: 47px;
   line-height: 45px;
   position: relative;
@@ -95,11 +96,27 @@ body {
     border-radius: 0 3px 0 0;
   }
   .btn_link_to {
+    padding: 15px !important;
     margin-right: 0px !important;
+    color: white !important;
   }
   input { color: white; }
 }
 
 .material-icons {
   color: $primary-color-dark-dark !important;
+}
+
+.col.no_border {
+  padding: 0px !important;
+}
+
+.check_box_remember {
+  margin-top: -2px !important;
+  span {
+    padding-left: 23px !important;
+  }
+  label {
+    font-size: 14px !important;
+  }
 }

@@ -84,6 +84,7 @@ body {
 
 
 .action_button_card {
+  padding: 0px !important;
   height: 47px;
   line-height: 45px;
   position: relative;
@@ -95,7 +96,9 @@ body {
     border-radius: 0 3px 0 0;
   }
   .btn_link_to {
+    padding: 15px !important;
     margin-right: 0px !important;
+    color: white !important;
   }
   input { color: white; }
 }

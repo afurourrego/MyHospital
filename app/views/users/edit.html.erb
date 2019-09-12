@@ -18,11 +18,12 @@
   <div class="card">
     <div class="card-action card_action_title">
       <span class="card-title white-text">User</span>
-      <div class="actions white-text waves-effect waves-light btn right action_button_card action_button_card_first_right">
-        <%= form.submit 'SAVE' %>
+      <div class="waves-effect waves-light btn right action_button_card action_button_card_first_right">
+        <%= form.submit 'SAVE', class: 'btn_link_to' %>
       </div>
+
       <div class="waves-effect waves-light btn right action_button_card">
-        <%= link_to 'BACK', users_path, class: 'white-text btn_link_to' %>
+        <%= link_to 'BACK', users_path, class: 'btn_link_to' %>
       </div>
     </div>
     <div class="card-content">

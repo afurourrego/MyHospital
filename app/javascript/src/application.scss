@@ -120,3 +120,11 @@ body {
     font-size: 14px !important;
   }
 }
+
+.datepicker-date-display {
+  background-color: $primary-color-dark-dark;
+}
+
+.datepicker-cancel, .datepicker-clear, .datepicker-today, .datepicker-done, .datepicker-table td.is-today  {
+  color: $primary-color-dark-dark;
+}

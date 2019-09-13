@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :eps
   devise_for :users, controllers: { invitations: 'invitations' }
 
   resources :users

@@ -4,11 +4,11 @@ class CreateProfiles < ActiveRecord::Migration[6.0]
       t.string :identification_card, unique: true
       t.string :email
       t.date :birthday
-      t.integer :eps
+      t.integer :eps_id
       t.string :full_name, null: false
       t.string :address
       t.string :city
-      t.integer :arl
+      t.integer :arl_id
       t.integer :rh, null: false
       t.string :phone, null: false
       t.text :allergies

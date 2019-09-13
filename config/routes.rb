@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
-  resources :arls
-  resources :eps
   devise_for :users, controllers: { invitations: 'invitations' }
 
   resources :users
   resources :profiles
   resources :settings, only: %i[index]
+  resources :eps
+  resources :arls
 
   # get 'welcome/index'
   #

@@ -51,8 +51,8 @@
           </div>
 
           <div class="input-field col s12 m4">
-            <%= form.label :birthday, 'Birthday' %>
-            <%= form.date_select :birthday %>
+            <%= form.label :birthday_date, 'Birthday' %>
+            <%= form.text_field :birthday_date, value: "#{profile&.birthday&.strftime("%b %-e, %Y")}", class: "datepicker datepicker-date" %>
           </div>
 
           <div class="input-field col s12 m4">
@@ -76,21 +76,21 @@
           </div>
 
           <div class="input-field col s12 m4">
-            <%= form.label :rh, 'RH' %>
-            <%= form.number_field :rh %>
+            <%= form.collection_select :rh, Profile.rhs, :first, ->(rh) { rh.first } %>
+            <%= form.label :rh, 'RH', class: 'active' %>
           </div>
 
-          <div class="input-field col s12 m4">
-            <%= form.label :allergies, 'Allergies' %>
-            <%= form.text_field :allergies %>
-          </div>
-
-          <div class="input-field col s12 m4">
+          <div class="input-field col s12 m8">
             <%= form.label :disability, 'Disability' %>
             <%= form.text_field :disability %>
           </div>
 
-          <div class="input-field col s12 m4">
+          <div class="input-field col s12">
+            <%= form.label :allergies, 'Allergies' %>
+            <%= form.text_field :allergies %>
+          </div>
+
+          <div class="input-field col s12">
             <%= form.label :notes, 'Notes' %>
             <%= form.text_field :notes %>
           </div>

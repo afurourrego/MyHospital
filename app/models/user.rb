@@ -9,9 +9,8 @@ class User < ApplicationRecord
 
   validate :validate_permited_roles, on: :update
 
-  validates_length_of :phone, minimum: 10, on: :update
-  validates :phone, presence: true, on: :update
-    validates :role, presence: true
+  # validates_length_of :phone, minimum: 10, on: :changed?
+  # validates :phone, presence: true, on: phone_changed?
 
   before_validation :clean_number_phone
 

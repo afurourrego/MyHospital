@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2019_09_13_034011) do
     t.string "city"
     t.integer "arl"
     t.integer "rh", null: false
-    t.integer "phone", null: false
+    t.string "phone", null: false
     t.text "allergies"
     t.string "disability"
     t.text "notes"

@@ -59,6 +59,11 @@ body {
   }
 }
 
+input:disabled {
+  -webkit-text-fill-color: black;
+  -webkit-opacity:1;
+}
+
 .btn {
   background-color: $primary-color-dark;
   border-radius: 0px !important;

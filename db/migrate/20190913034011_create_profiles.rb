@@ -10,7 +10,7 @@ class CreateProfiles < ActiveRecord::Migration[6.0]
       t.string :city
       t.integer :arl
       t.integer :rh, null: false
-      t.integer :phone, null: false
+      t.string :phone, null: false
       t.text :allergies
       t.string :disability
       t.text :notes

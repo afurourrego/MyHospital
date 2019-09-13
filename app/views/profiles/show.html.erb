@@ -1,69 +1,87 @@
-<p id="notice"><%= notice %></p>
+<div class="col s12">
+  <div class="card">
+    <div class="card-action card_action_title">
+      <span class="card-title white-text"><b>Patient</b></span>
+      <% if can? :update, Profile %>
+        <div class="waves-effect waves-light btn right action_button_card action_button_card_first_right">
+          <%= link_to 'EDIT', edit_profile_path(@profile), class: 'white-text btn_link_to' %>
+        </div>
+      <% end %>
+      <div class="waves-effect waves-light btn right action_button_card">
+        <%= link_to 'BACK', profiles_path, class: 'white-text btn_link_to' %>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="row">
+        <div class="col s12 m10 offset-m1">
 
-<p>
-  <strong>Identification card:</strong>
-  <%= @profile.identification_card %>
-</p>
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @profile&.identification_card %>" type="text" class="validate">
+            <label>Identification Card</label>
+          </div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @profile.email %>
-</p>
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @profile&.full_name %>" type="text" class="validate">
+            <label>Full Name</label>
+          </div>
 
-<p>
-  <strong>Birthday:</strong>
-  <%= @profile.birthday %>
-</p>
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @profile&.email %>" type="text" class="validate">
+            <label>Email</label>
+          </div>
 
-<p>
-  <strong>Eps:</strong>
-  <%= @profile.eps %>
-</p>
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @profile&.phone %>" type="text" class="validate">
+            <label>Phone</label>
+          </div>
 
-<p>
-  <strong>Full name:</strong>
-  <%= @profile.full_name %>
-</p>
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @profile&.birthday&.strftime("%b %-e, %Y") %>" type="text" class="validate">
+            <label>Birthday</label>
+          </div>
 
-<p>
-  <strong>Address:</strong>
-  <%= @profile.address %>
-</p>
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @profile&.eps %>" type="text" class="validate">
+            <label>EPS</label>
+          </div>
 
-<p>
-  <strong>City:</strong>
-  <%= @profile.city %>
-</p>
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @profile&.address %>" type="text" class="validate">
+            <label>Address</label>
+          </div>
 
-<p>
-  <strong>Arl:</strong>
-  <%= @profile.arl %>
-</p>
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @profile&.city %>" type="text" class="validate">
+            <label>City</label>
+          </div>
 
-<p>
-  <strong>Rh:</strong>
-  <%= @profile.rh %>
-</p>
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @profile&.arl %>" type="text" class="validate">
+            <label>ARL</label>
+          </div>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @profile.phone %>
-</p>
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @profile&.rh %>" type="text" class="validate">
+            <label>RH</label>
+          </div>
 
-<p>
-  <strong>Allergies:</strong>
-  <%= @profile.allergies %>
-</p>
+          <div class="input-field col s12 m8">
+            <input disabled value="<%= @profile&.disability %>" type="text" class="validate">
+            <label>Disability</label>
+          </div>
 
-<p>
-  <strong>Disability:</strong>
-  <%= @profile.disability %>
-</p>
+          <div class="input-field col s12">
+            <input disabled value="<%= @profile&.allergies %>" type="text" class="validate">
+            <label>Allergies</label>
+          </div>
 
-<p>
-  <strong>Notes:</strong>
-  <%= @profile.notes %>
-</p>
+          <div class="input-field col s12">
+            <input disabled value="<%= @profile&.notes %>" type="text" class="validate">
+            <label>Notes</label>
+          </div>
 
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

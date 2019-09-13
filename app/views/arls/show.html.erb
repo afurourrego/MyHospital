@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @arl.name %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @arl.active %>
+</p>
+
+<%= link_to 'Edit', edit_arl_path(@arl) %> |
+<%= link_to 'Back', arls_path %>

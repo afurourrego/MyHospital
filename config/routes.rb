@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { invitations: 'invitations' }
 
   resources :users
+  resources :profiles
 
   # get 'welcome/index'
   #

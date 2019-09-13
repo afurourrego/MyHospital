@@ -1,11 +1,12 @@
 class Profile < ApplicationRecord
 
-  belongs_to :eps, class_name: 'Ep', optional: true 
+  belongs_to :eps, class_name: 'Ep', optional: true
   belongs_to :arl
 
 
   enum rh: {'A+': 1, 'B+': 2, 'AB+': 3, 'O+': 4, 'A-': 5, 'B-': 6, 'AB-': 7, 'O-': 8 }
 
+  date_time_attribute :birthday
 
   def self.eps_list
     Ep.all.pluck(:name, :id)

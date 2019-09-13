@@ -48,8 +48,8 @@
                   <td><%= profile&.full_name&.titleize %></td>
                   <td><%= profile&.phone %></td>
                   <td><%= profile&.email %></td>
-                  <td><%= profile&.eps&.titleize %></td>
-                  <td><%= profile&.arl&.titleize %></td>
+                  <td><%= profile&.ep&.name&.titleize %></td>
+                  <td><%= profile&.arl&.name&.titleize %></td>
 
                   <td>
                     <% if can? :show, Profile %>
@@ -60,7 +60,7 @@
                   </td>
                   <td>
                     <% if can? :update, Profile %>
-                      <%= link_to edit_user_path(profile) do %>
+                      <%= link_to edit_profile_path(profile) do %>
                         <i class="material-icons">edit</i>
                       <% end %>
                     <% end %>

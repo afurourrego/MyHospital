@@ -56,8 +56,8 @@
           </div>
 
           <div class="input-field col s12 m4">
-            <%= form.label :eps, 'EPS' %>
-            <%= form.number_field :eps %>
+            <%= form.collection_select :eps_id, Profile.eps_list, :second, :first, { include_blank: 'None Selected'} %>
+            <%= form.label :eps, 'EPS', class: 'active' %>
           </div>
 
           <div class="input-field col s12 m4">
@@ -71,8 +71,8 @@
           </div>
 
           <div class="input-field col s12 m4">
-            <%= form.label :arl, 'ARL' %>
-            <%= form.number_field :arl %>
+            <%= form.collection_select :arl_id, Profile.arl_list, :second, :first, { include_blank: 'None Selected'} %>
+            <%= form.label :arl, 'ARL', class: 'active' %>
           </div>
 
           <div class="input-field col s12 m4">

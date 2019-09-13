@@ -1,6 +1,6 @@
 class Profile < ApplicationRecord
 
-  belongs_to :ep
+  belongs_to :eps, class_name: 'Ep', optional: true 
   belongs_to :arl
 
 

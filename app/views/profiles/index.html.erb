@@ -1,51 +1,83 @@
-<p id="notice"><%= notice %></p>
+<div class="col s12">
+  <div class="card">
+    <div class="card_action card_action_title">
+      <span class="card-title white-text"><b>Patients</b></span>
+      <div class="waves-effect waves-light btn right action_button_card action_button_card_first_right">
+        <%= link_to 'NEW', new_profile_path, class: 'btn_link_to' %>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="row card_content_row">
+        <div class="col s12 search_box">
+          <%= form_tag nil, method: :get do %>
+            <div class="striped input-field col s12 m4 l3">
+              <%= text_field_tag 'identification_card', params[:identification_card] %>
+              <%= label_tag :identification_card, 'Identification Card'%>
+            </div>
+            <div class="striped input-field col s12 m4 l3">
+              <%= text_field_tag 'full_name', params[:full_name] %>
+              <%= label_tag :full_name, 'Name'%>
+            </div>
+            <div class="striped input-field col s12 m4 l3">
+              <%= text_field_tag 'email', params[:email] %>
+              <%= label_tag :email, 'Email'%>
+            </div>
+            <%= button_tag :button, type: :submit, class: 'button_search waves-effect waves-light btn right col s12 m2 l2' do %>
+            <%= t("share.search") %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="scrollable col s12">
+          <table>
+            <thead>
+              <tr>
+                <th>Identification Card</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>EPS</th>
+                <th>ARL</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
 
-<h1>Profiles</h1>
+            <tbody>
+              <% @profiles.each do |profile| %>
+                <tr>
+                  <td><%= profile&.identification_card %></td>
+                  <td><%= profile&.full_name&.titleize %></td>
+                  <td><%= profile&.phone %></td>
+                  <td><%= profile&.email %></td>
+                  <td><%= profile&.eps&.titleize %></td>
+                  <td><%= profile&.arl&.titleize %></td>
 
-<table>
-  <thead>
-    <tr>
-      <th>Identification card</th>
-      <th>Email</th>
-      <th>Birthday</th>
-      <th>Eps</th>
-      <th>Full name</th>
-      <th>Address</th>
-      <th>City</th>
-      <th>Arl</th>
-      <th>Rh</th>
-      <th>Phone</th>
-      <th>Allergies</th>
-      <th>Disability</th>
-      <th>Notes</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @profiles.each do |profile| %>
-      <tr>
-        <td><%= profile.identification_card %></td>
-        <td><%= profile.email %></td>
-        <td><%= profile.birthday %></td>
-        <td><%= profile.eps %></td>
-        <td><%= profile.full_name %></td>
-        <td><%= profile.address %></td>
-        <td><%= profile.city %></td>
-        <td><%= profile.arl %></td>
-        <td><%= profile.rh %></td>
-        <td><%= profile.phone %></td>
-        <td><%= profile.allergies %></td>
-        <td><%= profile.disability %></td>
-        <td><%= profile.notes %></td>
-        <td><%= link_to 'Show', profile %></td>
-        <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
-        <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Profile', new_profile_path %>
+                  <td>
+                    <% if can? :show, Profile %>
+                      <%= link_to profile do %>
+                        <i class="material-icons">pageview</i>
+                      <% end %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if can? :update, Profile %>
+                      <%= link_to edit_user_path(profile) do %>
+                        <i class="material-icons">edit</i>
+                      <% end %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if can? :destroy, Profile %>
+                      <%= link_to profile, method: :delete, data: { confirm: "¿Esta seguro de elminarlo?" } do %>
+                        <i class="material-icons">delete</i>
+                      <% end %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

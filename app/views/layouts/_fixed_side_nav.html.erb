@@ -30,6 +30,16 @@
       <li><div class="divider"></div></li>
     <% end %>
 
+    <% if can? :manage, :all %>
+      <li>
+        <%= link_to settings_path, id:'settings_fixed_nav_bar' do %>
+        <i class="material-icons users">settings</i>
+        <span class='local_text'>Settings</span>
+        <% end %>
+      </li>
+      <li><div class="divider"></div></li>
+    <% end %>
+
   </ul>
   <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons menu_button">add_circle</i></a>
 

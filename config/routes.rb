@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :profiles
+  resources :settings, only: %i[index]
 
   # get 'welcome/index'
   #

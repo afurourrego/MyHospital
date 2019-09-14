@@ -11,16 +11,16 @@
         <div class="col s12 search_box">
           <%= form_tag nil, method: :get do %>
             <div class="striped input-field col s12 m4 l3">
-              <%= text_field_tag 'identification_card', params[:identification_card] %>
-              <%= label_tag :identification_card, 'Identification Card'%>
+              <%= select_tag 'identification_card', options_from_collection_for_select(Profile.all, :identification_card, :identification_card, params[:identification_card]), include_blank: 'None Selected' %>
+              <%= label_tag :identification_card, 'Identification Card', class: 'active' %>
             </div>
             <div class="striped input-field col s12 m4 l3">
-              <%= text_field_tag 'full_name', params[:full_name] %>
-              <%= label_tag :full_name, 'Name'%>
+              <%= select_tag 'full_name', options_from_collection_for_select(Profile.all, :full_name, :full_name, params[:full_name]), include_blank: 'None Selected' %>
+              <%= label_tag :full_name, 'Name', class: 'active' %>
             </div>
             <div class="striped input-field col s12 m4 l3">
-              <%= text_field_tag 'email', params[:email] %>
-              <%= label_tag :email, 'Email'%>
+              <%= select_tag 'email', options_from_collection_for_select(Profile.all, :email, :email, params[:email]), include_blank: 'None Selected' %>
+              <%= label_tag :email, 'Email', class: 'active' %>
             </div>
             <%= button_tag :button, type: :submit, class: 'button_search waves-effect waves-light btn right col s12 m2 l2' do %>
             <%= t("share.search") %>

@@ -30,6 +30,16 @@
       <li><div class="divider"></div></li>
     <% end %>
 
+    <% if can? :index, Appointment %>
+      <li>
+        <%= link_to appointments_path, id:'profiles_fixed_nav_bar' do %>
+        <i class="material-icons users">event_note</i>
+        <span class='local_text'>Appointments</span>
+        <% end %>
+      </li>
+      <li><div class="divider"></div></li>
+    <% end %>
+
     <% if can? :manage, Setting %>
       <li>
         <%= link_to settings_path, id:'settings_fixed_nav_bar' do %>

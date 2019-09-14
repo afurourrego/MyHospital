@@ -1,47 +1,57 @@
 <%= form_with(model: appointment, local: true) do |form| %>
   <% if appointment.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
-
+      <h2>
+        <% if appointment.errors.count == 1 %>
+          <%= appointment.errors.count %> <%= "Error prohibited this User from being saved:" %>
+        <% else %>
+          <%= "#{appointment.errors.count} Errors prohibited this User from being saved:" %>
+        <% end %>
+      </h2>
       <ul>
         <% appointment.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+        <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
+  <div class="card">
+    <div class="card-action card_action_title">
+      <span class="card-title white-text">Appointments</span>
+      <div class="waves-effect waves-light btn right action_button_card action_button_card_first_right">
+        <%= form.submit 'SAVE', class: 'btn_link_to' %>
+      </div>
 
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.datetime_select :date %>
-  </div>
+      <div class="waves-effect waves-light btn right action_button_card">
+        <%= link_to 'BACK', appointments_path, class: 'btn_link_to' %>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="row">
+        <div class="col s12 m10 offset-m1">
 
-  <div class="field">
-    <%= form.label :creator_id %>
-    <%= form.number_field :creator_id %>
-  </div>
+          <div class="input-field col s12 m4">
+            <%= form.collection_select :patient_id, Profile.all, :id, :full_name, { include_blank: 'None Selected'} %>
+            <%= form.label :patient_id, 'Patient', class: 'active' %>
+          </div>
 
-  <div class="field">
-    <%= form.label :doctor_id %>
-    <%= form.number_field :doctor_id %>
-  </div>
+          <div class="input-field col s12 m4">
+            <%= form.collection_select :doctor_id, User.doctor_list, :second, :first, { include_blank: 'None Selected'} %>
+            <%= form.label :doctor_id, 'Doctor', class: 'active' %>
+          </div>
 
-  <div class="field">
-    <%= form.label :patient_id %>
-    <%= form.number_field :patient_id %>
-  </div>
+          <div class="input-field col s12 m2">
+            <%= form.label :date_date, 'Date' %>
+            <%= form.text_field :date_date, value: "#{appointment&.date&.strftime("%b %-e, %Y")}", class: "datepicker datepicker-date" %>
+          </div>
 
-  <div class="field">
-    <%= form.label :diagnostic %>
-    <%= form.text_area :diagnostic %>
-  </div>
+          <div class="input-field col s12 m2">
+            <%= form.label :date_time, 'Hour' %>
+            <%= form.text_field :date_time, value: "#{appointment&.date&.strftime("%I:%M %p")}", class: "datepicker datepicker-time" %>
+          </div>
 
-  <div class="field">
-    <%= form.label :assistance %>
-    <%= form.check_box :assistance %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>

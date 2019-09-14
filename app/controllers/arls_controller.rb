@@ -1,10 +1,13 @@
 class ArlsController < ApplicationController
   before_action :set_arl, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+
+  load_and_authorize_resource
 
   # GET /arls
   # GET /arls.json
   def index
-    @arls = Arl.all
+    @arls = Arl.search(@arls, search_params)
   end
 
   # GET /arls/1
@@ -70,5 +73,9 @@ class ArlsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def arl_params
       params.require(:arl).permit(:name, :active)
+    end
+
+    def search_params
+      params.permit(:name_arl)
     end
 end

@@ -1,35 +1,90 @@
-<p id="notice"><%= notice %></p>
+<div class="col s12">
+  <div class="card">
+    <div class="card_action card_action_title">
+      <span class="card-title white-text"><b>Appointments</b></span>
+      <div class="waves-effect waves-light btn right action_button_card action_button_card_first_right">
+        <%= link_to 'NEW', new_appointment_path, class: 'btn_link_to' %>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="row card_content_row">
+        <div class="col s12 search_box">
+          <%= form_tag nil, method: :get do %>
+            <div class="striped input-field col s12 m4 l3">
+              <%= text_field_tag 'date', params[:date], class: "datepicker datepicker-date" %>
+              <%= label_tag :date, 'Date'%>
+            </div>
+            <div class="striped input-field col s12 m4 l3">
+              <%= select_tag 'patient_id', options_from_collection_for_select(Profile.all, :id, :full_name, params[:patient_id]), include_blank: 'None Selected' %>
+              <%= label_tag :patient_id, 'Patient', class: 'active' %>
+            </div>
+            <div class="striped input-field col s12 m4 l3">
+              <%= select_tag 'doctor_id', options_from_collection_for_select(User.doctor_list, :second, :first, params[:doctor_id]), include_blank: 'None Selected' %>
+              <%= label_tag :doctor_id, 'Doctor', class: 'active' %>
+            </div>
 
-<h1>Appointments</h1>
+            <%= button_tag :button, type: :submit, class: 'button_search waves-effect waves-light btn right col s12 m2 l2' do %>
+            <%= t("share.search") %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="scrollable col s12">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Doctor</th>
+                <th>Patient</th>
+                <% if can? :manage, :all %>
+                  <th>Creator</th>
+                <% end %>
+                <th>Assistance</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Creator</th>
-      <th>Doctor</th>
-      <th>Patient</th>
-      <th>Assistance</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @appointments.each do |appointment| %>
-      <tr>
-        <td><%= appointment.date %></td>
-        <td><%= appointment.creator&.name %></td>
-        <td><%= appointment.doctor&.name %></td>
-        <td><%= appointment.patient&.full_name %></td>
-        <td><%= appointment.assistance %></td>
-        <td><%= link_to 'Show', appointment %></td>
-        <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
-        <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Appointment', new_appointment_path %>
+            <tbody>
+              <% @appointments.each do |appointment| %>
+                <tr>
+                  <td><%= appointment&.date&.strftime("%b %-e, %Y %I:%M %p") %></td>
+                  <td><%= appointment&.doctor&.name %></td>
+                  <td><%= appointment&.patient&.full_name %></td>
+                  <% if can? :manage, :all %>
+                    <td><%= appointment.creator&.name %></td>
+                  <% end %>
+                  <td>
+                    <% if appointment&.assistance %>
+                      <i class="material-icons">check</i>
+                    <% else %>
+                      <i class="material-icons">close</i>
+                    <% end %>
+                  <td>
+                    <% if can? :show, Profile %>
+                      <%= link_to appointment do %>
+                        <i class="material-icons">pageview</i>
+                      <% end %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if can? :update, Profile %>
+                      <%= link_to edit_appointment_path(appointment) do %>
+                        <i class="material-icons">edit</i>
+                      <% end %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if can? :destroy, Profile %>
+                      <%= link_to appointment, method: :delete, data: { confirm: "¿Esta seguro de elminarlo?" } do %>
+                        <i class="material-icons">delete</i>
+                      <% end %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,13 @@
 class ProfilesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
+
+  load_and_authorize_resource
 
   # GET /profiles
   # GET /profiles.json
   def index
-    @profiles = Profile.all
+    @profiles = Profile.search(@profiles, search_params)
   end
 
   # GET /profiles/1
@@ -73,5 +76,9 @@ class ProfilesController < ApplicationController
                                       :birthday_date, :eps_id, :full_name,
                                       :address, :city, :arl_id, :rh, :phone,
                                       :allergies, :disability, :notes)
+    end
+
+    def search_params
+      params.permit(:identification_card, :full_name, :email)
     end
 end

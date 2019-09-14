@@ -6,6 +6,10 @@ module Levels
 
       can %i[index read],                                                       Profile
       cannot %i[create update destroy],                                         Profile
+
+      cannot :manage,                                                           Setting
+      cannot :manage,                                                           Arl
+      cannot :manage,                                                           Ep
     end
   end
 end

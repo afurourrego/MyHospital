@@ -30,7 +30,7 @@
       <li><div class="divider"></div></li>
     <% end %>
 
-    <% if can? :manage, :all %>
+    <% if can? :manage, Setting %>
       <li>
         <%= link_to settings_path, id:'settings_fixed_nav_bar' do %>
         <i class="material-icons users">settings</i>

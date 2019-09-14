@@ -1,27 +1,51 @@
 <%= form_with(model: arl, local: true) do |form| %>
   <% if arl.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(arl.errors.count, "error") %> prohibited this arl from being saved:</h2>
-
+      <h2>
+        <% if arl.errors.count == 1 %>
+          <%= arl.errors.count %> <%= "Error prohibited this User from being saved:" %>
+        <% else %>
+          <%= "#{arl.errors.count} Errors prohibited this User from being saved:" %>
+        <% end %>
+      </h2>
       <ul>
         <% arl.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+        <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
+  <div class="card">
+    <div class="card-action card_action_title">
+      <span class="card-title white-text">ARL</span>
+      <div class="waves-effect waves-light btn right action_button_card action_button_card_first_right">
+        <%= form.submit 'SAVE', class: 'btn_link_to' %>
+      </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+      <div class="waves-effect waves-light btn right action_button_card">
+        <%= link_to 'BACK', settings_path, class: 'btn_link_to' %>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="row">
+        <div class="col s12 m10 offset-m1">
 
-  <div class="field">
-    <%= form.label :active %>
-    <%= form.check_box :active %>
-  </div>
+          <div class="input-field col s12 m6">
+            <%= form.label :name, 'Name' %>
+            <%= form.text_field :name %>
+          </div>
 
-  <div class="actions">
-    <%= form.submit %>
+          <div class="col s6 check_box_remember check_box_forms">
+            <label>
+              <%= form.check_box :active %>
+              <span>
+                <%= form.label :active %>
+              </span>
+            </label>
+          </div>
+
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>

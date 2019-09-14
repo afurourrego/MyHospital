@@ -2,6 +2,9 @@
   <div class="card">
     <div class="card_action card_action_title">
       <span class="card-title white-text"><b>EPS</b></span>
+      <div class="waves-effect waves-light btn right action_button_card action_button_card_first_right">
+        <%= link_to 'NEW', new_ep_path, class: 'btn_link_to' %>
+      </div>
     </div>
     <div class="card-content">
       <div class="row card_content_row">
@@ -30,7 +33,13 @@
               <% @eps.each do |ep| %>
                 <tr>
                   <td><%= ep&.name&.titleize %></td>
-                  <td><%= ep&.active %></td>
+                  <td>
+                    <% if ep&.active %>
+                      <i class="material-icons">check</i>
+                    <% else %>
+                      <i class="material-icons">close</i>
+                    <% end %>
+                  </td>
                   <td>
                     <% if can? :update, Arl %>
                       <%= link_to edit_ep_path(ep) do %>

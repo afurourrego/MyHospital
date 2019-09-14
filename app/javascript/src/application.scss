@@ -126,6 +126,13 @@ input:disabled {
   }
 }
 
+.check_box_forms {
+  @media #{$medium-and-up} {
+    margin-top: 35px !important;
+  }
+}
+
+
 .datepicker-date-display {
   background-color: $primary-color-dark-dark;
 }

@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   resources :users
   resources :profiles
   resources :settings, only: %i[index]
-  resources :eps, except: %i[show]
-  resources :arls, except: %i[show]
+  resources :eps, except: %i[index show]
+  resources :arls, except: %i[index show]
 
   # get 'welcome/index'
   #

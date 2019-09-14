@@ -31,7 +31,7 @@ class EpsController < ApplicationController
 
     respond_to do |format|
       if @ep.save
-        format.html { redirect_to @ep, notice: 'Ep was successfully created.' }
+        format.html { redirect_to settings_path, notice: 'EPS was successfully created.' }
         format.json { render :show, status: :created, location: @ep }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class EpsController < ApplicationController
   def update
     respond_to do |format|
       if @ep.update(ep_params)
-        format.html { redirect_to @ep, notice: 'Ep was successfully updated.' }
+        format.html { redirect_to settings_path, notice: 'EPS was successfully updated.' }
         format.json { render :show, status: :ok, location: @ep }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class EpsController < ApplicationController
   def destroy
     @ep.destroy
     respond_to do |format|
-      format.html { redirect_to eps_url, notice: 'Ep was successfully destroyed.' }
+      format.html { redirect_to settings_path, notice: 'EPS was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

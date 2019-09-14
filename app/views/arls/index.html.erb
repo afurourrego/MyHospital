@@ -2,6 +2,9 @@
   <div class="card">
     <div class="card_action card_action_title">
       <span class="card-title white-text"><b>ARL</b></span>
+      <div class="waves-effect waves-light btn right action_button_card action_button_card_first_right">
+        <%= link_to 'NEW', new_arl_path, class: 'btn_link_to' %>
+      </div>
     </div>
     <div class="card-content">
       <div class="row card_content_row">
@@ -30,7 +33,13 @@
               <% @arls.each do |arl| %>
                 <tr>
                   <td><%= arl&.name&.titleize %></td>
-                  <td><%= arl&.active %></td>
+                  <td>
+                    <% if arl&.active %>
+                      <i class="material-icons">check</i>
+                    <% else %>
+                      <i class="material-icons">close</i>
+                    <% end %>
+                  </td>
                   <td>
                     <% if can? :update, Arl %>
                       <%= link_to edit_arl_path(arl) do %>

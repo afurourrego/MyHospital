@@ -31,7 +31,7 @@ class ArlsController < ApplicationController
 
     respond_to do |format|
       if @arl.save
-        format.html { redirect_to @arl, notice: 'Arl was successfully created.' }
+        format.html { redirect_to settings_path, notice: 'ARL was successfully created.' }
         format.json { render :show, status: :created, location: @arl }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class ArlsController < ApplicationController
   def update
     respond_to do |format|
       if @arl.update(arl_params)
-        format.html { redirect_to @arl, notice: 'Arl was successfully updated.' }
+        format.html { redirect_to settings_path, notice: 'ARL was successfully updated.' }
         format.json { render :show, status: :ok, location: @arl }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class ArlsController < ApplicationController
   def destroy
     @arl.destroy
     respond_to do |format|
-      format.html { redirect_to arls_url, notice: 'Arl was successfully destroyed.' }
+      format.html { redirect_to settings_path, notice: 'ARL was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

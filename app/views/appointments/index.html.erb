@@ -59,6 +59,15 @@
                       <i class="material-icons">close</i>
                     <% end %>
                   <td>
+                    <% if can? :check_assistance, Profile %>
+                      <% unless appointment&.assistance == true %>
+                        <%= link_to appointment_check_assistance_path(appointment) do %>
+                          <i class="material-icons">beenhere</i>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                  </td>
+                  <td>
                     <% if can? :show, Profile %>
                       <%= link_to appointment do %>
                         <i class="material-icons">pageview</i>
@@ -67,7 +76,7 @@
                   </td>
                   <td>
                     <% if can? :update, Profile %>
-                      <%= link_to edit_appointment_path(appointment) do %>
+                      <%= link_to edit_appointment_path(appointment), data: { confirm: "¿Confirmar la llegada del paciente a la cita?" } do %>
                         <i class="material-icons">edit</i>
                       <% end %>
                     <% end %>

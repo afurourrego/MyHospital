@@ -1,6 +1,6 @@
 class AppointmentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_appointment, only: [:show, :edit, :update, :destroy]
+  before_action :set_appointment, only: [:show, :edit, :update, :destroy, :check_assistance]
 
   load_and_authorize_resource
 
@@ -64,9 +64,19 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def check_assistance
+    if @appointment.update_attributes(assistance: true)
+      respond_to do |format|
+        format.html { redirect_to appointments_url, notice: 'Appointment was successfully registered.' }
+        format.json { head :no_content }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_appointment
+      params[:id] ||= params[:appointment_id]
       @appointment = Appointment.find(params[:id])
     end
 

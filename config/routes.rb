@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :appointments
   devise_for :users, controllers: { invitations: 'invitations' }
 
   resources :users
@@ -8,6 +7,9 @@ Rails.application.routes.draw do
   resources :settings, only: %i[index]
   resources :eps, except: %i[index show]
   resources :arls, except: %i[index show]
+  resources :appointments do
+    get :check_assistance
+  end
 
   # get 'welcome/index'
   #

@@ -1,6 +1,6 @@
 class AppointmentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_appointment, only: [:show, :edit, :update, :destroy, :check_assistance]
+  before_action :set_appointment, only: [:show, :edit, :update, :destroy, :check_assistance, :diagnostic, :diagnostic_send]
 
   load_and_authorize_resource
 
@@ -67,8 +67,24 @@ class AppointmentsController < ApplicationController
   def check_assistance
     if @appointment.update_attributes(assistance: true)
       respond_to do |format|
-        format.html { redirect_to appointments_url, notice: 'Appointment was successfully registered.' }
+        format.html { redirect_to appointments_url, notice: 'Check assistance was successfully registered.' }
         format.json { head :no_content }
+      end
+    end
+  end
+
+  def diagnostic
+  end
+
+  def diagnostic_send
+    binding.pry
+    respond_to do |format|
+      if @appointment.update_attributes(diagnostic_params)
+        format.html { redirect_to @appointment, notice: 'Diagnostic was successfully registered.' }
+        format.json { head :no_content }
+      else
+        format.html { render :diagnostic }
+        format.json { render json: @appointment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -87,5 +103,9 @@ class AppointmentsController < ApplicationController
 
     def search_params
       params.permit(:date, :doctor_id, :patient_id)
+    end
+
+    def diagnostic_params
+      params.permit(:diagnostic)
     end
 end

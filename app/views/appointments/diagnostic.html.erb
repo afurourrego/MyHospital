@@ -1,0 +1,57 @@
+<%= form_with(model: @appointment, local: true, method: :diagnostic) do |form| %>
+  <% if @appointment.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <% if @appointment.errors.count == 1 %>
+          <%= @appointment.errors.count %> <%= "Error prohibited this User from being saved:" %>
+        <% else %>
+          <%= "#{@appointment.errors.count} Errors prohibited this User from being saved:" %>
+        <% end %>
+      </h2>
+      <ul>
+        <% @appointment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="card">
+    <div class="card-action card_action_title">
+      <span class="card-title white-text">Appointments</span>
+      <div class="waves-effect waves-light btn right action_button_card action_button_card_first_right">
+        <%= form.submit 'SAVE', class: 'btn_link_to' %>
+      </div>
+
+      <div class="waves-effect waves-light btn right action_button_card">
+        <%= link_to 'BACK', @appointments_path, class: 'btn_link_to' %>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="row">
+        <div class="col s12 m10 offset-m1">
+
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @appointment&.patient&.full_name %>" type="text" class="validate">
+            <label>Patient</label>
+          </div>
+
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @appointment&.doctor&.name %>" type="text" class="validate">
+            <label>Doctor</label>
+          </div>
+
+          <div class="input-field col s12 m4">
+            <input disabled value="<%= @appointment&.date&.strftime("%b %-e, %Y %I:%M %p") %>" type="text" class="validate">
+            <label>Date</label>
+          </div>
+
+          <div class="input-field col s12">
+            <%= form.label :diagnostic, 'Diagnostic' %>
+            <%= form.text_field :diagnostic %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

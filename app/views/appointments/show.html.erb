@@ -9,6 +9,11 @@
           <%= link_to 'EDIT', edit_appointment_path(@appointment), class: 'white-text btn_link_to' %>
         </div>
       <% end %>
+      <% if can? :diagnostic, Appointment %>
+        <div class="waves-effect waves-light btn right action_button_card">
+          <%= link_to 'DIAGNOSTIC', appointment_diagnostic_path(@appointment), class: 'white-text btn_link_to' %>
+        </div>
+      <% end %>
       <div class="waves-effect waves-light btn right action_button_card">
         <%= link_to 'BACK', appointments_path, class: 'white-text btn_link_to' %>
       </div>

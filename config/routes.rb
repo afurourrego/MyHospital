@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :arls, except: %i[index show]
   resources :appointments do
     get :check_assistance
+    get :diagnostic
+    get :diagnostic_send
   end
 
   # get 'welcome/index'

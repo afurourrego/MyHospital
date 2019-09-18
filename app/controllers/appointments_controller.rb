@@ -77,7 +77,6 @@ class AppointmentsController < ApplicationController
   end
 
   def diagnostic_send
-    binding.pry
     respond_to do |format|
       if @appointment.update_attributes(diagnostic_params)
         format.html { redirect_to @appointment, notice: 'Diagnostic was successfully registered.' }
@@ -106,6 +105,6 @@ class AppointmentsController < ApplicationController
     end
 
     def diagnostic_params
-      params.permit(:diagnostic)
+      params.require(:appointment).permit(:diagnostic)
     end
 end

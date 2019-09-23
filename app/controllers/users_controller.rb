@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_current_user
 
   load_and_authorize_resource
 
-  before_action :set_current_user
 
   def index
     @users = User.search(@users, user_params_search)#.page(params[:page])

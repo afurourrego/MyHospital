@@ -26,15 +26,15 @@ document.addEventListener('turbolinks:load', function() {
 
   var slidOutMenu                 = document.querySelector('#slide-out');
 //     collapsible                 = document.querySelectorAll('.collapsible');
-//     datePikers                  = document.querySelectorAll('.datepicker-date');
-//     timePikers                  = document.querySelectorAll('.datepicker-time');
-//
+  var datePikers                  = document.querySelectorAll('.datepicker-date');
+  var timePikers                  = document.querySelectorAll('.datepicker-time');
+
   var $select                     = $('select')
 //
   var slidOutMenuInstance         = new M.Sidenav(slidOutMenu, {});
 //     collapsibleInstance         = M.Collapsible.init(collapsible, {});
-//     datePickerinstances         = M.Datepicker.init(datePikers, { showClearBtn: true, autoClose: true, yearRange: 80 });
-//     timePickerinstances         = M.Timepicker.init(timePikers, { showClearBtn: true, autoClose: true });
+  var  datePickerinstances        = M.Datepicker.init(datePikers, { showClearBtn: true, autoClose: true, yearRange: 80 });
+  var  timePickerinstances        = M.Timepicker.init(timePikers, { showClearBtn: true, autoClose: true });
 //
 //
   if ($select.length > 0 )                $('select').select2();
@@ -43,8 +43,8 @@ document.addEventListener('turbolinks:load', function() {
 document.addEventListener('turbolinks:before-visit', function() {
   var slidOutMenu                 = document.querySelector('#slide-out');
 //     collapsible                 = document.querySelectorAll('.collapsible');
-//     datePikers                  = document.querySelectorAll('.datepicker-date');
-//     timePikers                  = document.querySelectorAll('.datepicker-time');
+  var  datePikers                  = document.querySelectorAll('.datepicker-date');
+  var  timePikers                  = document.querySelectorAll('.datepicker-time');
 //
 //
   var slidOutMenuInstance         = M.Sidenav.getInstance(slidOutMenu);
@@ -58,21 +58,21 @@ document.addEventListener('turbolinks:before-visit', function() {
 //       });
 //     };
 //
-//     if (!!datePikers && datePikers.length > 0) {
-//       datePikers.forEach(function (element) {
-//         var datePickerinstances = M.Datepicker.getInstance(element);
-//         if (datePickerinstances) datePickerinstances.destroy();
-//       });
-//     };
-//
-//     if (!!timePikers && timePikers.length > 0) {
-//       timePikers.forEach(function (element) {
-//         var timePickerinstances = M.Timepicker.getInstance(element);
-//         if (timePickerinstances) timePickerinstances.destroy();
-//       });
-//     };
-//
-  });
+  if (!!datePikers && datePikers.length > 0) {
+    datePikers.forEach(function (element) {
+      var datePickerinstances = M.Datepicker.getInstance(element);
+      if (datePickerinstances) datePickerinstances.destroy();
+    });
+  };
+
+  if (!!timePikers && timePikers.length > 0) {
+    timePikers.forEach(function (element) {
+      var timePickerinstances = M.Timepicker.getInstance(element);
+      if (timePickerinstances) timePickerinstances.destroy();
+    });
+  };
+
+});
 
 document.addEventListener('turbolinks:before-cache', function() {
   var $select                     = $('select')

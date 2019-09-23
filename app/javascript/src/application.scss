@@ -59,6 +59,11 @@ body {
   }
 }
 
+input:disabled {
+  -webkit-text-fill-color: black;
+  -webkit-opacity:1;
+}
+
 .btn {
   background-color: $primary-color-dark;
   border-radius: 0px !important;
@@ -119,4 +124,19 @@ body {
   label {
     font-size: 14px !important;
   }
+}
+
+.check_box_forms {
+  @media #{$medium-and-up} {
+    margin-top: 35px !important;
+  }
+}
+
+
+.datepicker-date-display {
+  background-color: $primary-color-dark-dark;
+}
+
+.datepicker-cancel, .datepicker-clear, .datepicker-today, .datepicker-done, .datepicker-table td.is-today  {
+  color: $primary-color-dark-dark;
 }

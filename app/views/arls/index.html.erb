@@ -1,0 +1,65 @@
+<div class="col s12 m6">
+  <div class="card">
+    <div class="card_action card_action_title">
+      <span class="card-title white-text"><b>ARL</b></span>
+      <div class="waves-effect waves-light btn right action_button_card action_button_card_first_right">
+        <%= link_to 'NEW', new_arl_path, class: 'btn_link_to' %>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="row card_content_row">
+        <div class="col s12 search_box">
+          <%= form_tag nil, method: :get do %>
+            <div class="striped input-field col s12 m6 l6 no_border">
+              <%= text_field_tag 'name_arl', params[:name_arl] %>
+              <%= label_tag :name_arl, 'Name'%>
+            </div>
+            <%= button_tag :button, type: :submit, class: 'button_search waves-effect waves-light btn right col s12 m2 l2' do %>
+            <%= t("share.search") %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="scrollable col s12">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Active</th>
+                <th colspan="2"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @arls.each do |arl| %>
+                <tr>
+                  <td><%= arl&.name&.titleize %></td>
+                  <td>
+                    <% if arl&.active %>
+                      <i class="material-icons">check</i>
+                    <% else %>
+                      <i class="material-icons">close</i>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if can? :update, Arl %>
+                      <%= link_to edit_arl_path(arl) do %>
+                        <i class="material-icons">edit</i>
+                      <% end %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if can? :destroy, Arl %>
+                      <%= link_to arl, method: :delete, data: { confirm: "¿Esta seguro de elminarlo?" } do %>
+                        <i class="material-icons">delete</i>
+                      <% end %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

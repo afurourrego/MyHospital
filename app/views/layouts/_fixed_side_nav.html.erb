@@ -11,13 +11,33 @@
     <br><br><br>
     <li><div class="divider"></div></li>
     <% if can? :index, User %>
-    <li>
-      <%= link_to users_path, id:'users_fixed_nav_bar' do %>
-      <i class="material-icons users">account_circle</i>
-      <span class='local_text'>Users</span>
-      <% end %>
-    </li>
-    <li><div class="divider"></div></li>
+      <li>
+        <%= link_to users_path, id:'users_fixed_nav_bar' do %>
+        <i class="material-icons users">account_circle</i>
+        <span class='local_text'>Users</span>
+        <% end %>
+      </li>
+      <li><div class="divider"></div></li>
+    <% end %>
+
+    <% if can? :index, Profile %>
+      <li>
+        <%= link_to profiles_path, id:'profiles_fixed_nav_bar' do %>
+        <i class="material-icons users">person_add</i>
+        <span class='local_text'>Patients</span>
+        <% end %>
+      </li>
+      <li><div class="divider"></div></li>
+    <% end %>
+
+    <% if can? :manage, Setting %>
+      <li>
+        <%= link_to settings_path, id:'settings_fixed_nav_bar' do %>
+        <i class="material-icons users">settings</i>
+        <span class='local_text'>Settings</span>
+        <% end %>
+      </li>
+      <li><div class="divider"></div></li>
     <% end %>
 
   </ul>

@@ -24,9 +24,8 @@ class Ability
   def guest_user_rules
     cannot :manage, User
     cannot :manage, Profile
-    cannot :manage, SecureBag
-    cannot :manage, HouseLove
-    cannot :manage, Event
+    cannot :manage, Ep
+    cannot :manage, Arl
   end
 
   def as_json

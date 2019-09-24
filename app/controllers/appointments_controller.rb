@@ -80,7 +80,7 @@ class AppointmentsController < ApplicationController
     respond_to do |format|
       if @appointment.update_attributes(diagnostic_params)
         format.html { redirect_to @appointment, notice: 'Diagnostic was successfully registered.' }
-        format.json { head :no_content }
+        format.json { render :show, status: :ok, location: @appointment }
       else
         format.html { render :diagnostic }
         format.json { render json: @appointment.errors, status: :unprocessable_entity }

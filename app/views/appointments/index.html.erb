@@ -46,7 +46,14 @@
             <tbody>
               <% @appointments.each do |appointment| %>
                 <tr>
-                  <td><%= appointment&.date&.strftime("%b %-e, %Y %I:%M %p") %></td>
+                  <td>
+                    <span>
+                      <%= appointment&.date&.strftime("%b %-e, %Y") %>
+                    </span>
+                    <span class="text_bold">
+                      <%= appointment&.date&.strftime(" %I:%M %p") %>
+                    </span>
+                  </td>
                   <td><%= appointment&.doctor&.name %></td>
                   <td><%= appointment&.patient&.full_name %></td>
                   <% if can? :manage, :all %>

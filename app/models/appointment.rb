@@ -6,6 +6,10 @@ class Appointment < ApplicationRecord
 
   date_time_attribute :date
 
+  validates :doctor, presence: true
+  validates :patient, presence: true
+  validates :date, presence: true
+
   def self.search(appointments, params)
     appointments = where('date >= ?', Date.parse(params['date']).beginning_of_day) unless params['date'].blank?
     appointments = appointments.where('date <= ?', Date.parse(params['date']).end_of_day) unless params['date'].blank?

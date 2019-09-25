@@ -17,7 +17,7 @@
 
 <p>
   <strong>Type:</strong>
-  <%= @order.type %>
+  <%= @order.type_order %>
 </p>
 
 <p>
@@ -25,5 +25,5 @@
   <%= @order.description %>
 </p>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Edit', edit_appointment_order_path(@appointment, @order) %> |
+<%= link_to 'Back', appointment_path(@appointment) %>

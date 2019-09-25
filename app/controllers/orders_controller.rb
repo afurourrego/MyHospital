@@ -1,5 +1,8 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_appointment
+
+  load_and_authorize_resource
 
   # GET /orders
   # GET /orders.json
@@ -14,7 +17,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
-    @order = Order.new
+    @order = @appointment.orders.new
   end
 
   # GET /orders/1/edit
@@ -24,11 +27,11 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
+    @order = @appointment.orders.new(order_params)
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.html { redirect_to [@appointment, @order], notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+        format.html { redirect_to [@appointment, @order], notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit }
@@ -67,8 +70,12 @@ class OrdersController < ApplicationController
       @order = Order.find(params[:id])
     end
 
+    def set_appointment
+      @appointment = Appointment.find(params[:appointment_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:doctor_id, :patient_id, :appointment_id, :type, :description)
+      params.require(:order).permit(:doctor_id, :patient_id, :appointment_id, :type_order, :description)
     end
 end

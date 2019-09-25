@@ -1,4 +1,4 @@
-<%= form_with(model: order, local: true) do |form| %>
+<%= form_with(model: [@appointment, order], local: true) do |form| %>
   <% if order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
@@ -26,9 +26,9 @@
     <%= form.number_field :appointment_id %>
   </div>
 
-  <div class="field">
-    <%= form.label :type %>
-    <%= form.number_field :type %>
+  <div class="input-field col s12 m6">
+    <%= form.collection_select :type_order, Order.type_orders, :first, ->(type_order) { type_order.first.titleize }, { include_blank: 'None Selected'} %>
+    <%= form.label :type_order, 'Type', class: 'active' %>
   </div>
 
   <div class="field">

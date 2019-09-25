@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2019_09_25_025002) do
     t.integer "doctor_id"
     t.integer "patient_id"
     t.integer "appointment_id"
-    t.integer "type"
+    t.integer "type_order"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

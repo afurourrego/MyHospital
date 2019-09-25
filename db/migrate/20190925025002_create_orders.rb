@@ -4,7 +4,7 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.integer :doctor_id
       t.integer :patient_id
       t.integer :appointment_id
-      t.integer :type
+      t.integer :type_order
       t.text :description
 
       t.timestamps

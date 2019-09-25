@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :appointments do
     get :check_assistance
     get :diagnostic
-    get :diagnostic_send
+    patch :diagnostic_send
   end
 
   # get 'welcome/index'

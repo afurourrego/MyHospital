@@ -78,9 +78,9 @@ class AppointmentsController < ApplicationController
 
   def diagnostic_send
     respond_to do |format|
-      if @appointment.update_attributes(diagnostic_params)
+      if @appointment.update(diagnostic_params)
         format.html { redirect_to @appointment, notice: 'Diagnostic was successfully registered.' }
-        format.json { render :show, status: :ok, location: @appointment }
+        format.json { head :no_content }
       else
         format.html { render :diagnostic }
         format.json { render json: @appointment.errors, status: :unprocessable_entity }

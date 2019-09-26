@@ -1,7 +1,5 @@
 class Ep < ApplicationRecord
 
-  has_and_belongs_to_many :profiles
-
   validates :name, presence: true, uniqueness: true
 
   def self.search(eps, params)

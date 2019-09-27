@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     get :check_assistance
     get :diagnostic
     patch :diagnostic_send
-    resources :orders
+    resources :orders, except: %i[index]
   end
 
   # get 'welcome/index'

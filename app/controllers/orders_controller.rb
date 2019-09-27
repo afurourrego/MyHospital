@@ -28,6 +28,9 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = @appointment.orders.new(order_params)
+    @order.appointment_id = @appointment.id
+    @order.doctor_id = @appointment.doctor_id
+    @order.patient_id = @appointment.patient_id
 
     respond_to do |format|
       if @order.save
@@ -59,7 +62,7 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
+      format.html { redirect_to @appointment, notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -133,10 +133,20 @@ input:disabled {
 }
 
 
-.datepicker-date-display {
+.datepicker-date-display, .timepicker-digital-display {
   background-color: $primary-color-dark-dark;
 }
 
-.datepicker-cancel, .datepicker-clear, .datepicker-today, .datepicker-done, .datepicker-table td.is-today  {
+.datepicker-cancel, .datepicker-today, .datepicker-done, .datepicker-done, .datepicker-table td.is-today, .timepicker-close {
   color: $primary-color-dark-dark;
+}
+.timepicker-canvas line {
+  stroke: $primary-color-dark-dark;
+}
+.timepicker-canvas-bg, .timepicker-canvas-bearing {
+ fill: $primary-color-dark-dark;
+}
+
+.text_bold {
+  font-weight: bold;
 }

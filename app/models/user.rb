@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  has_and_belongs_to_many :appointments
 
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
@@ -44,6 +45,11 @@ class User < ApplicationRecord
 
   def clean_number_phone
     self.phone = phone&.gsub(/(?!^\+)\D*/, '')
+  end
+
+  def self.doctor_list
+    doctors = User.all.where(role: 'doctor')
+    doctors = doctors.pluck(:name, :id)
   end
 
   private

@@ -1,7 +1,5 @@
 class Arl < ApplicationRecord
 
-  has_and_belongs_to_many :profiles
-
   validates :name, presence: true, uniqueness: true
 
   def self.search(arl, params)

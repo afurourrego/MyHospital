@@ -7,6 +7,11 @@ Rails.application.routes.draw do
   resources :settings, only: %i[index]
   resources :eps, except: %i[index show]
   resources :arls, except: %i[index show]
+  resources :appointments do
+    get :check_assistance
+    get :diagnostic
+    patch :diagnostic_send
+  end
 
   # get 'welcome/index'
   #

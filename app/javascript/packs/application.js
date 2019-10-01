@@ -8,8 +8,9 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require('jquery')
-import '../src/application.scss';
+require('serviceworker-companion')
 
+import '../src/application.scss';
 
 import 'materialize-css/dist/js/materialize.js';
 
@@ -20,7 +21,6 @@ import 'materialize-css/dist/js/materialize.js';
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-//= require serviceworker-companion
 
 document.addEventListener('turbolinks:load', function() {
   M.updateTextFields();

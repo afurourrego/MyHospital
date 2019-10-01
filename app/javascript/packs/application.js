@@ -8,8 +8,9 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require('jquery')
-import '../src/application.scss';
+require('serviceworker-companion')
 
+import '../src/application.scss';
 
 import 'materialize-css/dist/js/materialize.js';
 
@@ -81,5 +82,3 @@ document.addEventListener('turbolinks:before-cache', function() {
     $(this).select2('destroy');
   });
 });
-
-//= require serviceworker-companion

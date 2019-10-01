@@ -81,3 +81,5 @@ document.addEventListener('turbolinks:before-cache', function() {
     $(this).select2('destroy');
   });
 });
+
+//= require serviceworker-companion

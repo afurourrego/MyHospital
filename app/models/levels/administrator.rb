@@ -10,6 +10,9 @@ module Levels
       cannot :manage,                                                           Setting
       cannot :manage,                                                           Arl
       cannot :manage,                                                           Ep
+
+      can %i[index read create update check_assistance],                        Appointment
+      cannot %i[destroy diagnostic diagnostic_send],                            Appointment
     end
   end
 end

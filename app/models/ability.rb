@@ -26,6 +26,7 @@ class Ability
     cannot :manage, Profile
     cannot :manage, Ep
     cannot :manage, Arl
+    cannot :manage, Appointment
   end
 
   def as_json

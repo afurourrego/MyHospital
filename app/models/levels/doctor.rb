@@ -14,6 +14,9 @@ module Levels
       can %i[index read diagnostic diagnostic_send],                            Appointment, doctor_id: @user.id, assistance: true
       cannot %i[destroy create update check_assistance],                        Appointment
 
+      can %i[read create update],                                               Order
+      cannot %i[destroy],                                                       Order
+
     end
   end
 end

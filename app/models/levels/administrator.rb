@@ -13,6 +13,9 @@ module Levels
 
       can %i[index read create update check_assistance],                        Appointment
       cannot %i[destroy diagnostic diagnostic_send],                            Appointment
+
+      can %i[read],                                                             Order
+      cannot %i[create update destroy],                                         Order
     end
   end
 end

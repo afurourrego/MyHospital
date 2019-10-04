@@ -1,0 +1,43 @@
+<div class="col s12">
+  <div class="card">
+    <div class="card-action card_action_title">
+      <span class="card-title white-text"><b>Order</b></span>
+      <% if can? :update, Order %>
+        <div class="waves-effect waves-light btn right action_button_card action_button_card_first_right">
+          <%= link_to 'EDIT', edit_appointment_order_path(@appointment, @order), class: 'white-text btn_link_to' %>
+        </div>
+      <% end %>
+      <div class="waves-effect waves-light btn right action_button_card">
+        <%= link_to 'BACK', appointment_path(@appointment), class: 'white-text btn_link_to' %>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="row">
+        <div class="col s12 m10 offset-m1">
+
+          <div class="input-field col s12 m3">
+            <input disabled value="<%= @appointment&.doctor&.name %>" type="text" class="validate">
+            <label>Doctor</label>
+          </div>
+          <div class="input-field col s12 m3">
+            <input disabled value="<%= @appointment&.patient&.full_name %>" type="text" class="validate">
+            <label>Patient</label>
+          </div>
+          <div class="input-field col s12 m3">
+            <input disabled value="<%= @appointment&.date&.strftime("%b %-e, %Y %I:%M %p") %>" type="text" class="validate">
+            <label>Appointment</label>
+          </div>
+          <div class="input-field col s12 m3">
+            <input disabled value="<%= @order&.type_order %>" type="text" class="validate">
+            <label>Type Order</label>
+          </div>
+          <div class="input-field col s12">
+            <input disabled value="<%= @order&.description %>" type="text" class="validate">
+            <label>Description</label>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

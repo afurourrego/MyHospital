@@ -1,5 +1,7 @@
 class Appointment < ApplicationRecord
 
+  has_many :orders
+
   belongs_to :creator, class_name: 'User', optional: true
   belongs_to :doctor, class_name: 'User', optional: true
   belongs_to :patient, class_name: 'Profile', optional: true
@@ -23,6 +25,8 @@ class Appointment < ApplicationRecord
   end
 
   def conflict_date
+    return if date.blank?
+    
     dates = Appointment.all.where('date >= ?', date.beginning_of_day)
     dates = dates.where('date <= ?', date.end_of_day)
     dates = dates.where(doctor_id: doctor_id)

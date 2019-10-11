@@ -34,8 +34,7 @@ RSpec.describe User, type: :model do
     new_user.email = 'new_user@myhospital.com'
     new_user.password = 123456
     new_user.save
-
-    expect(new_user.errors.messages[:role]).to eq ["can't be blank"]
+    expect(new_user.errors.messages[:role]).to eq []
   end
 
 end

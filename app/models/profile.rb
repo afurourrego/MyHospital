@@ -6,6 +6,10 @@ class Profile < ApplicationRecord
   belongs_to :eps, class_name: 'Ep', optional: true
   belongs_to :arl, optional: true
 
+  validates :identification_card, presence: true
+  validates :full_name, presence: true
+  validates :phone, presence: true
+
 
   enum rh: {'A+': 1, 'B+': 2, 'AB+': 3, 'O+': 4, 'A-': 5, 'B-': 6, 'AB-': 7, 'O-': 8 }
 

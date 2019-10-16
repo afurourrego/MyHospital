@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :order do
-    doctor_id { 1 }
-    patient_id { 1 }
-    appointment_id { 1 }
-    type { 1 }
+    doctor_id { Appointment.first.doctor_id }
+    patient_id { Appointment.first.patient_id }
+    appointment_id { Appointment.first.id }
+    type_order { 1 }
     description { "MyText" }
   end
 end

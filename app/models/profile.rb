@@ -1,6 +1,6 @@
 class Profile < ApplicationRecord
 
-  has_and_belongs_to_many :appointments
+  has_many :appointments
   has_many :orders
 
   belongs_to :eps, class_name: 'Ep', optional: true

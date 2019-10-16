@@ -5,6 +5,8 @@ RSpec.feature 'Profiles Feature', type: :feature do
   let(:administrator) { create(:administrator) }
   let(:doctor) { create(:doctor) }
 
+  let(:profile) { create(:profile) }
+
   before do
     User.current = user
   end
@@ -29,10 +31,99 @@ RSpec.feature 'Profiles Feature', type: :feature do
     expect(page).not_to have_content("NEW")
   end
 
+  it "should user admin can search patients" do
+    profile
+    sign_in administrator
+    visit send("profiles_path")
 
+    all('.striped')[0].click
+    all('#identification_card option')[1].click
 
+    find(".button_search").click
 
+    expect(page).to have_content("paciente uno")
+  end
 
+  it "should user doctor can search patients" do
+    profile
+    sign_in doctor
+    visit send("profiles_path")
+
+    all('.striped')[0].click
+    all('#identification_card option')[1].click
+
+    find(".button_search").click
+
+    expect(page).to have_content("paciente uno")
+  end
+
+  it "should user admin can update patients" do
+    profile
+    sign_in administrator
+    visit send("profiles_path")
+
+    visit send("edit_profile_path", id: Profile.first.id)
+    fill_in "Name", with: "cambio nombre"
+    click_button("SAVE")
+
+    visit send("profiles_path")
+    expect(page).not_to have_content("paciente uno")
+    expect(page).to have_content("cambio nombre")
+  end
+
+  it "should user doctor cannot update patients" do
+    profile
+    sign_in doctor
+    visit send("profiles_path")
+
+    visit send("profile_path", id: Profile.first.id)
+
+    expect(page).not_to have_content("EDIT")
+  end
+
+  it "should user admin can view to patients" do
+    profile
+    sign_in administrator
+    visit send("profiles_path")
+
+    visit send("profile_path", id: Profile.first.id)
+    expect(page).to have_content("EDIT")
+  end
+
+  it "should user doctor can view to patients" do
+    profile
+    sign_in doctor
+    visit send("profiles_path")
+
+    visit send("profile_path", id: Profile.first.id)
+    expect(page).to have_content("BACK")
+  end
+
+  it "should user super admin can destroy patient" do
+    profile
+    sign_in user
+    visit send("profiles_path")
+
+    click_link('delete')
+
+    expect(page).not_to have_content 'paciente uno'
+  end
+
+  it "should user admin cannot destroy patient" do
+    profile
+    sign_in administrator
+    visit send("profiles_path")
+
+    expect(page).not_to have_content 'delete'
+  end
+
+  it "should user doctor cannot destroy patient" do
+    profile
+    sign_in doctor
+    visit send("profiles_path")
+
+    expect(page).not_to have_content 'delete'
+  end
 
   def sign_in(user = nil)
     visit send("new_user_session_path")

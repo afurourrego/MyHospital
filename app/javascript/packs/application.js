@@ -22,6 +22,15 @@ import 'materialize-css/dist/js/materialize.js';
 // const imagePath = (name) => images(name, true)
 
 document.addEventListener('turbolinks:load', function() {
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = 'https://app.termly.io/embed.min.js';
+  s.id = '80e55de5-c541-4fea-83dd-d74c84c5b6d8';
+  s.setAttribute("data-name", "termly-embed-banner");
+  var x = document.getElementsByTagName('script')[0];
+  x.parentNode.insertBefore(s, x);
+
   M.updateTextFields();
 
   var slidOutMenu                 = document.querySelector('#slide-out');

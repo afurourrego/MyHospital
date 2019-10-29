@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     patch :diagnostic_send
     resources :orders, except: %i[index]
   end
+  resources :history, only: %i[index]
 
   # get 'welcome/index'
   #

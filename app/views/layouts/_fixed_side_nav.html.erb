@@ -40,6 +40,16 @@
       <li><div class="divider"></div></li>
     <% end %>
 
+    <% if can? :manage, History %>
+      <li>
+        <%= link_to history_index_path, id:'history_fixed_nav_bar' do %>
+        <i class="material-icons users">description</i>
+        <span class='local_text'>History</span>
+        <% end %>
+      </li>
+      <li><div class="divider"></div></li>
+    <% end %>
+
     <% if can? :manage, Setting %>
       <li>
         <%= link_to settings_path, id:'settings_fixed_nav_bar' do %>

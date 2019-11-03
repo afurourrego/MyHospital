@@ -24,6 +24,18 @@ class Profile < ApplicationRecord
     profiles
   end
 
+  def self.search_history(profiles, params)
+    profile = profiles.find_by(identification_card: params['identification_card']) if params['identification_card'].present?
+    histories = Appointment.where(patient: profile)
+
+    histories = histories.where('date >= ?', Date.parse(params['from_date']).beginning_of_day) unless params['from_date'].blank?
+    histories = histories.where('date <= ?', Date.parse(params['from_date']).end_of_day) if params['to_date'].blank? && params['from_date'].present?
+    histories = histories.where('date >= ?', Date.parse(params['to_date']).beginning_of_day) if params['from_date'].blank? && params['to_date'].present?
+    histories = histories.where('date <= ?', Date.parse(params['to_date']).end_of_day) unless params['to_date'].blank?
+
+    histories
+  end
+
   def self.eps_list
     Ep.all.pluck(:name, :id)
   end

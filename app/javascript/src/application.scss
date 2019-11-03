@@ -150,3 +150,15 @@ input:disabled {
 .text_bold {
   font-weight: bold;
 }
+
+.title_order_history {
+  color: white;
+  font-weight: bold;
+  background: $primary-color-dark;
+  margin-top: 19px;
+  margin-left: -24px;
+  margin-right: -25px;
+  padding-left: 24px !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}

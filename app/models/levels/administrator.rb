@@ -16,6 +16,9 @@ module Levels
 
       can %i[read],                                                             Order
       cannot %i[create update destroy],                                         Order
+
+      can :manage,                                                              History
+
     end
   end
 end
